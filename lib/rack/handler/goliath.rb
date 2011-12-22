@@ -4,7 +4,7 @@ require 'rack'
 require 'async-rack'
 
 module Rack
-	module Handler
+  module Handler
     
     register 'goliath', 'Rack::Handler::Goliath'
 

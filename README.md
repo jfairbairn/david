@@ -1,5 +1,5 @@
-David &endash; defeating Goliath for your Rack apps
-=====
+David - defeating Goliath for your Rack apps
+============================================
 
 So Goliath is ["mostly Rack-compatible" but "not Rack-compliant"][1].
 I'm just fooling with some stuff to see how far we can go towards running
