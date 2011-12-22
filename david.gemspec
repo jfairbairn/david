@@ -1,8 +1,9 @@
-require File.expand_path(File.join(File.dirname(__FILE__), 'goliath-rack'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'david'))
 
 Gem::Specification.new do |s|
-	s.name = 'goliath-rack'
-  s.version = Goliath::Rack::VERSION
+	s.name = 'david'
+  s.summary = 'Defeating Goliath for your Rack apps'
+  s.version = David::VERSION
   s.authors = ['James Fairbairn']
   s.email = ['james@netlagoon.com']
   s.required_ruby_version = '>= 1.9.2'
