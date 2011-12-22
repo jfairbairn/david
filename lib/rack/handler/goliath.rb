@@ -3,6 +3,14 @@ require 'log4r'
 require 'rack'
 require 'async-rack'
 
+# module Log4r
+#   class StderrOutputter
+#     def close
+#     end
+#   end
+# end
+
+
 module Rack
   module Handler
     
@@ -16,7 +24,7 @@ module Rack
         server = ::Goliath::Server.new(options[:Host] || '0.0.0.0',
                                        options[:Port] || 8080)
         logger = Log4r::Logger.new('Goliath')
-        logger.outputters=[Log4r::IOOutputter.new('stderr', STDERR)]
+        logger.outputters=Log4r::StderrOutputter.new('stderr')
         server.app = lambda do |env|
           env[RACK_LOGGER] ||= logger
           env[RACK_ERRORS] ||= logger
@@ -35,5 +43,11 @@ module Rack
         }
       end
     end
+  end
+end
+
+module Sinatra
+  class Base
+    set :server, %w(goliath)
   end
 end
