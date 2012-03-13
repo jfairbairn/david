@@ -1,26 +1,8 @@
-require 'rack/session/cookie'
 require 'goliath'
 require 'sinatra/base'
 require 'goliath/websocket'
 # require 'rack/handler/goliath'
 
-require 'action_dispatch'
-module ActionDispatch
-  class MiddlewareStack
-    alias_method :old_assert_index, :assert_index
-    def assert_index(index, where)
-      old_assert_index(index, where)
-    rescue => e
-      if index.is_a?(String) && index =~ /^Rack::(.*)$/
-        old_assert_index("AsyncRack::#{$1}", where)
-      else
-        raise e
-      end
-    end
-  end
-end
-require './testapp/config/environment'
-Rack::Chunked = AsyncRack::Chunked
 
 class MyApp < Sinatra::Base
   get '/' do
@@ -39,19 +21,6 @@ class SinatraAdaptor
     end
     const_set klass.name, c
     Goliath::API.inherited(const_get(klass.name))
-    c
-  end
-end
-
-class RailsAdaptor
-  def self.for(app)
-    c=Class.new(Goliath::API) do
-      define_method :response do |env|
-        puts env['PATH_INFO']
-        app.call(env)
-      end
-    end
-    const_set 'Application', c
     c
   end
 end

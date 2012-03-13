@@ -6,14 +6,10 @@ Gem::Specification.new do |s|
   s.version = David::VERSION
   s.authors = ['James Fairbairn']
   s.email = ['james@netlagoon.com']
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 1.9.1'
   
-  s.add_dependency 'goliath', '~> 0.9.4'
-  s.add_dependency 'rack', '~> 1.3.5'
+  s.add_dependency 'goliath', '>= 0.9.4'
 
-  s.add_development_dependency 'sinatra', '~> 1.3.1'
-  s.add_development_dependency 'thin', '~> 1.2.11'
-  s.add_development_dependency 'haml'
-  s.add_development_dependency 'rails'
+  s.files = `git ls-files`.split(/\r?\n/)
   s.require_paths = ['lib']
 end
