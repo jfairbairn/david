@@ -17,7 +17,7 @@ module David
           end
         end
       end
-      classname = klass.name.gsub(/.*::/, '')
+      classname = rack_app.class.name.gsub(/.*::/, '')
       const_set classname, c
       Goliath::API.inherited(const_get(classname))
       c
