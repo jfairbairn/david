@@ -2,7 +2,7 @@ require 'goliath/api'
 
 module David
   class RackAdaptor
-    def self.build(opts, &blk)
+    def self.build(opts={}, &blk)
       once = !! opts[:once]
 
       rack_app = blk.call
