@@ -2,7 +2,7 @@ require 'goliath'
 
 module Rack
   module Handler
-    class David
+    class Goliath
       def self.run(rack_app, options={})
         # server = ::Thin::Server.new(options[:Host] || '0.0.0.0',
         #                             options[:Port] || 8080,
