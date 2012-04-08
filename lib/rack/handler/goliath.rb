@@ -14,10 +14,9 @@ module Rack
         runner.app = Goliath::Rack::Builder.build(rack_app, api)
 
         runner.load_plugins(rack_app.plugins)
-        runner.run
 
-        yield server if block_given?
-        server.start
+        yield runner if block_given?
+        runner.run
       end
 
       def self.valid_options
