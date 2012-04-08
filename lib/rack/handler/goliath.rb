@@ -31,3 +31,4 @@ module Rack
 
   end
 end
+require 'rack/session/cookie'
