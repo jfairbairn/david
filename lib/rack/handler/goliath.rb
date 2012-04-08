@@ -26,5 +26,8 @@ module Rack
         }
       end
     end
+
+    register 'goliath', 'Rack::Handler::Goliath'
+
   end
 end
